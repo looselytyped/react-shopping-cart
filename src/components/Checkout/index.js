@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Checkout = props =>
   <table id="cart" className="table table-hover table-condensed">
@@ -21,5 +22,9 @@ const Checkout = props =>
       </tr>
     </tfoot>
   </table>
+
+Checkout.propTypes = {
+  total: PropTypes.number.isRequired,
+};
 
 export default Checkout;

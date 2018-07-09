@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import InventoryItem from "./InventoryItem";
 
 const Inventory = props =>
@@ -23,5 +24,10 @@ const Inventory = props =>
       }
     </tbody>
   </table>
+
+Inventory.propTypes = {
+  inventory: PropTypes.array.isRequired,
+  addToCart: PropTypes.func.isRequired,
+};
 
 export default Inventory;

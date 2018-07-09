@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CartItem extends React.Component {
   render() {
@@ -6,7 +7,21 @@ class CartItem extends React.Component {
       item,
       quantity,
       removeFromCart,
+      updateQuantity,
     } = this.props;
+
+    const format = (num) =>
+      new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(num);
+
+    const onChange = (e) => {
+      updateQuantity(item, e.currentTarget.value);
+    }
+
     return <tr>
       <td data-th="Product">
         <div className="row">
@@ -22,10 +37,10 @@ class CartItem extends React.Component {
           type="number"
           className="form-control text-center"
           value={quantity}
-          onChange={this.onChange} />
+          onChange={onChange} />
       </td>
       <td data-th="Subtotal" className="text-center">
-        {this.format(quantity * item.price)}
+        {format(quantity * item.price)}
       </td>
       <td className="actions" data-th="">
         <button
@@ -35,17 +50,12 @@ class CartItem extends React.Component {
       </td>
     </tr>
   }
-
-  format = (num) =>
-    new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(num);
-
-  onChange = (e) => {
-    this.props.updateQuantity(this.props.item, e.currentTarget.value);
-  }
 }
+
+CartItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  quantity: PropTypes.number.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+};
+
 export default CartItem;

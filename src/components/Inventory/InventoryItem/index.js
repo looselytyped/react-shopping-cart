@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const InventoryItem = ({ item, addToCart }) =>
   <tr>
@@ -26,5 +27,10 @@ const InventoryItem = ({ item, addToCart }) =>
       }
     </td>
   </tr>
+
+InventoryItem.defaultProps = {
+  item: PropTypes.object.isRequired,
+  addToCart: PropTypes.func.isRequired,
+};
 
 export default InventoryItem;

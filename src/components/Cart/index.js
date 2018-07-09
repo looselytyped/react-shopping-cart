@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import CartItem from './CartItem';
 
 const Cart = ({ cartItems, removeFromCart, updateQuantity }) =>
@@ -31,5 +33,12 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) =>
       <h4 className="alert-heading">Empty Cart</h4>
       <p>Please add some items to your cart from our inventory above</p>
     </div>
+
+
+CartItem.propTypes = {
+  cartItems: PropTypes.array,
+  removeFromCart: PropTypes.func.isRequired,
+  updateQuantity: PropTypes.func.isRequired,
+};
 
 export default Cart;
