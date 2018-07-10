@@ -7,33 +7,19 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inventory: [
-        {
-          id: 1,
-          name: 'Apple - 1 lb',
-          description: 'An apple a day keeps the doctor away',
-          price: 2,
-          addedToCart: false,
-        },
-        {
-          id: 2,
-          name: 'Banana - 1 lb',
-          description: 'B-B-B-anana!',
-          price: 1.25,
-          addedToCart: false,
-        },
-        {
-          id: 3,
-          name: 'Grapes - 1 lb',
-          description: 'Green goodness',
-          price: 0.50,
-          addedToCart: false,
-        }
-      ],
+      inventory: [],
       cartItems: [
       ],
     }
   }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/inventory')
+      .then(response => response.json())
+      .then(result => this.setState({ inventory: result }))
+      .catch(error => console.error);
+  }
+
   render() {
     return (
       <div className="container">

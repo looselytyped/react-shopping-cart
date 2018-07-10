@@ -1,0 +1,25 @@
+{
+  "inventory": [
+    {
+      "id": 1,
+      "name": "Apple - 1 lb",
+      "description": "An apple a day keeps the doctor away",
+      "price": 2,
+      "addedToCart": false
+    },
+    {
+      "id": 2,
+      "name": "Banana - 1 lb",
+      "description": "B-B-B-anana!",
+      "price": 1.25,
+      "addedToCart": false
+    },
+    {
+      "id": 3,
+      "name": "Grapes - 1 lb",
+      "description": "Green goodness",
+      "price": 0.50,
+      "addedToCart": false
+    }
+  ]
+}
